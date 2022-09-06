@@ -5,34 +5,12 @@ const checkResponse = (response) =>
     response.json()
     : Promise.reject(new Error(`Ошибка ${response.status}: ${response.statusText}`));
 
-const headers = {
-  'Content-type': "application/json",
-};
-
-// export const register = ({ email, password }) => {
-//   return fetch(`${BASE_URL}/signup`, {
-//     method: 'POST',
-//     headers,
-//     body: JSON.stringify({ email, password })
-//   })
-//     .then(res => checkResponse(res));
-// };
-
-// export const authorize = ({ email, password }) => {
-//   return fetch(`${BASE_URL}/signin`, {
-//     method: "POST",
-//     headers,
-//     body: JSON.stringify({ email, password })
-//   })
-//     .then(res => checkResponse(res));
-// };
-
-export const getContent = () => {
-  return fetch(`${BASE_URL}/users/me`, {
-    method: 'GET',
-    headers: {
-      ...headers,
-    },
-  })
-    .then(res => checkResponse(res));
-};
+    async function fetchMovie(movieId) {
+  try {
+    const response = await axios.get(
+      `https://floating-sierra-20135.herokuapp.com/api/movie/${movieId}`
+    );
+    this.movie = response.data.data;
+  } catch (e) {
+    console.log(e);
+  }
