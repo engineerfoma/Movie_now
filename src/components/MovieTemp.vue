@@ -21,10 +21,10 @@
             >
               {{ movie.title }}
             </h3>
-            <p class="list__item_text">{{ movie.year }}, {{ movie.genres }}</p>
-            <p class="list__item_text">РЕЖИССЁР: {{ movie.directors }}</p>
+            <p class="list__item_text">{{ movie.year }}, {{ genres() }}</p>
+            <p class="list__item_text">РЕЖИССЁР: {{ directors() }}</p>
             <p class="list__item_text">
-              АКТЁРЫ: <span class="list__item_actors">{{ movie.actors }}</span>
+              АКТЁРЫ: <span class="list__item_actors">{{ actors() }}</span>
             </p>
             <p class="list__item_description"></p>
           </div>
@@ -37,6 +37,26 @@
 <script>
 export default {
   props: ['title', 'movie'],
+  methods: {
+    directors: function () {
+      if(this.movie.directors !== null) {
+      return this.movie.directors.toString().split(',').join(', ');
+    }
+    return '';
+    },
+    actors: function () {
+      if(this.movie.actors !== null) {
+      return this.movie.actors.toString().split(',').join(', ');
+    }
+    return '';
+    },
+    genres: function () {
+      if(this.movie.genres !== null) {
+      return this.movie.genres.toString().split(',').join(', ');
+    }
+    return '';
+    }
+  },
 };
 </script>
 

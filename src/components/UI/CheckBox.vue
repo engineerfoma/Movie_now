@@ -3,9 +3,10 @@
     <div className="sort__container sort__container_name">
       <label htmlFor="checkbox-name" class="label sort__label-name">
         <input
-          type="checkbox"
+          type="radio"
           class="label_input sort__label_input-name"
           id="checkbox-name"
+          v-model="radio"
         />
         <span
           class="sort__checkbox sort__checkbox-name"
@@ -17,9 +18,10 @@
     <div className="sort__container sort__container_year">
       <label htmlFor="checkbox-year" class="label sort__label-year">
         <input
-          type="checkbox"
+          type="radio"
           class="label_input sort__label_input-year"
           id="checkbox-year"
+          v-model="radio"
         />
         <span
           class="sort__checkbox sort__checkbox-year"
@@ -35,7 +37,11 @@
 
 <script>
 export default {
-}
+    // props: [HandleSortYear, HandleSortName]
+    data: () => ({
+    radio: '',
+  }),
+};
 </script>
 
 <style lang="scss" >
@@ -69,11 +75,11 @@ export default {
     width: 15px;
     height: 15px;
     border: 1px solid #c4c4c4;
-    transition: easy .3s;
+    transition: easy 0.3s;
 
-  &-year {
-    margin-left: 45px;
-  }
+    &-year {
+      margin-left: 45px;
+    }
 
     &_text {
       margin-left: 24px;

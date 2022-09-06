@@ -5,7 +5,12 @@
       <p class="container__text">Назад к списку</p>
     </router-link>
   </div>
-  <movie-temp :movie="movie" />
+  <div v-if="movie.id">
+    <movie-temp :movie="movie" />
+  </div>
+  <h3 v-else class="error">
+    К сожалению, по вашему запросу ничего не найдено...
+  </h3>
 </template>
 
 <script>
@@ -45,7 +50,7 @@ export default {
 }
 
 .container {
-  position:relative;
+  position: relative;
   max-width: 73vw;
   margin: 42px auto 28px;
   border-bottom: 1px solid #c4c4c4;
@@ -66,5 +71,12 @@ export default {
     color: rgba(255, 82, 82, 0.98);
     text-decoration-line: underline;
   }
+}
+
+.error {
+  @include font(Roboto, 500, 32px, 1);
+  color: #fff;
+  max-width: 73vw;
+  margin: 0 auto;
 }
 </style>

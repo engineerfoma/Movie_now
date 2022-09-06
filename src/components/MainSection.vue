@@ -1,17 +1,26 @@
 <template>
   <h2 class="title">Фильмы</h2>
-  <check-box />
-  <movie-temp v-for="movie in movies" :key="movie.id" :movie="movie" />
+  <check-box
+    :HandleSortYear="HandleSortYear"
+    :HandleSortName="HandleSortName"
+  />
+  <movie-temp
+    v-for="movie in movies"
+    :key="movie.id"
+    :movie="movie"
+    class="hover"
+  />
 </template>
 
 <script>
 import axios from "axios";
 import MovieTemp from "@/components/MovieTemp.vue";
-import CheckBox from "@/components/UI/CheckBox.vue"
+import CheckBox from "@/components/UI/CheckBox.vue";
 
 export default {
   components: {
-    MovieTemp, CheckBox
+    MovieTemp,
+    CheckBox,
   },
   data: () => ({
     movies: [],
@@ -31,6 +40,18 @@ export default {
   },
   mounted() {
     this.fetchMovies();
+  },
+  watch: {
+    HandleSortYear(newValue) {
+      this.movies.sort((movie1, movie2) => {
+        return movie1[newValue]?.localeCompare(movie2[newValue]);
+      });
+    },
+    HandleSortName(newValue) {
+      this.movies.sort((movie1, movie2) => {
+        return movie1[newValue]?.localeCompare(movie2[newValue]);
+      });
+    },
   },
 };
 </script>
@@ -52,4 +73,8 @@ export default {
   padding-top: 40px;
   margin: 0 auto 18px;
 }
+
+// .hover:hover {
+//   transition:
+// }
 </style>
