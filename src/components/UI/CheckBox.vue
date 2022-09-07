@@ -1,45 +1,36 @@
 <template>
   <div class="sort">
-    <div className="sort__container sort__container_name">
-      <label htmlFor="checkbox-name" class="label sort__label-name">
-        <input
-          type="radio"
-          class="label_input sort__label_input-name"
-          id="checkbox-name"
-          v-model="radio"
-        />
-        <span
-          class="sort__checkbox sort__checkbox-name"
-          @click="HandleSortName"
-        ></span>
-      </label>
-      <p class="sort__checkbox_text">Отсортировать по названию</p>
-    </div>
-    <div className="sort__container sort__container_year">
-      <label htmlFor="checkbox-year" class="label sort__label-year">
-        <input
-          type="radio"
-          class="label_input sort__label_input-year"
-          id="checkbox-year"
-          v-model="radio"
-        />
-        <span
-          class="sort__checkbox sort__checkbox-year"
-          @click="HandleSortYear"
-        ></span>
-      </label>
-      <p class="sort__checkbox_text sort__checkbox_text-year">
-        Отсортировать по году
-      </p>
-    </div>
+    <label for="checkbox-name" class="label sort__label-name">
+      <input
+        type="checkbox"
+        class="label_input sort__input-name"
+        id="checkbox-name"
+      />
+      <span class="sort__checkbox sort__checkbox-name" @click="HandleSortName">
+      </span>
+    </label>
+    <p class="text text-name">Отсортировать по названию</p>
+
+    <label for="checkbox-year" class="label sort__label-year">
+      <input
+        type="checkbox"
+        class="label_input sort__input-year"
+        id="checkbox-year"
+      />
+      <span
+        class="sort__checkbox sort__checkbox-year"
+        @click="HandleSortYear"
+      ></span>
+    </label>
+    <p class="text text-year">Отсортировать по году</p>
   </div>
 </template>
 
 <script>
 export default {
-    // props: [HandleSortYear, HandleSortName]
-    data: () => ({
-    radio: '',
+  // props: [HandleSortYear, HandleSortName]
+  data: () => ({
+    radioP: "",
   }),
 };
 </script>
@@ -55,46 +46,34 @@ export default {
 .sort {
   display: flex;
   position: relative;
-  max-width: 73vw;
-  max-height: 84px;
-  margin: 0 auto 28px;
+  max-width: 1400px;
+  margin: 18px auto 28px;
   border-bottom: 1px solid #c4c4c4;
+  padding-bottom: 18px;
 
-  &__container {
-    margin-bottom: 18px;
+  &__label {
+    position: relative;
   }
 
-  &__label_input-year {
-    margin-left: 45px;
+  &__input-year {
+    left: 261px;
   }
 
   &__checkbox {
     position: absolute;
-    top: 1px;
+    top: 2px;
     left: 0;
     width: 15px;
     height: 15px;
     border: 1px solid #c4c4c4;
-    transition: easy 0.3s;
 
     &-year {
-      margin-left: 45px;
-    }
-
-    &_text {
-      margin-left: 24px;
-      @include font(Roboto, 400, 16px, 1);
-      color: #c4c4c4;
-
-      &-year {
-        margin-left: 70px;
-      }
+      margin-left: 261px;
     }
   }
 }
 
 .label {
-  position: relative;
   width: 15px;
   height: 15px;
   cursor: pointer;
@@ -104,8 +83,7 @@ export default {
     position: absolute;
     width: 17px;
     height: 17px;
-    top: 1px;
-    margin-right: 10px;
+    top: 0;
 
     &:checked ~ .sort__checkbox {
       background-image: url("@/images/check_box_active.svg");
@@ -113,6 +91,18 @@ export default {
       background-position: 50% 50%;
       border: none;
     }
+  }
+}
+
+.text {
+  transition: easy 0.3s;
+  @include font(Roboto, 400, 16px, 1);
+  color: #c4c4c4;
+  padding-top: 2px;
+
+  &-name {
+    margin-left: 10.5px;
+    margin-right: 34.5px;
   }
 }
 </style>

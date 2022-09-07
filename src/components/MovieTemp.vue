@@ -36,6 +36,7 @@
 
 <script>
 export default {
+  
   props: ['title', 'movie'],
   methods: {
     directors: function () {
@@ -80,13 +81,13 @@ export default {
 
   &__container {
     margin: 0 auto;
-    width: 73vw;
+    width: 1400px;
   }
 }
 
 .description {
   padding: 24px 32px;
-  width: 1440px - 168px;
+  width: 1400px - 168px;
 }
 
 .list__item {

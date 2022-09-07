@@ -4,12 +4,16 @@
     :HandleSortYear="HandleSortYear"
     :HandleSortName="HandleSortName"
   />
-  <movie-temp
-    v-for="movie in movies"
-    :key="movie.id"
-    :movie="movie"
-    class="hover"
-  />
+  <div v-if="movies.length > 0">
+    
+      <movie-temp
+        v-for="movie in movies"
+        :key="movie.id"
+        :movie="movie"
+      />
+  
+  </div>
+  <div v-else class="loading"></div>
 </template>
 
 <script>
@@ -56,7 +60,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @mixin font($family, $weight, $size, $height) {
   font-family: $family;
   font-size: $size;
@@ -64,9 +68,18 @@ export default {
   line-height: $height;
 }
 
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .title {
   display: flex;
-  max-width: 73vw;
+  max-width: 1400px;
   @include font(Roboto, 500, 32px, 1);
   color: #fff;
   text-align: left;
@@ -74,7 +87,16 @@ export default {
   margin: 0 auto 18px;
 }
 
-// .hover:hover {
-//   transition:
-// }
+.loading {
+  position: absolute;
+  width: 136px;
+  height: 136px;
+  top: 50%;
+  right: 50%;
+  background-image: url("@/images/loader.svg");
+  background-size: 136px 136px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  animation: 2.5s linear 0s normal none infinite running loading;
+}
 </style>

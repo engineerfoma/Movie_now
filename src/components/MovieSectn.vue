@@ -51,7 +51,7 @@ export default {
 
 .container {
   position: relative;
-  max-width: 73vw;
+  max-width: 1400px;
   margin: 42px auto 28px;
   border-bottom: 1px solid #c4c4c4;
   padding-bottom: 22px;
@@ -76,7 +76,7 @@ export default {
 .error {
   @include font(Roboto, 500, 32px, 1);
   color: #fff;
-  max-width: 73vw;
+  max-width: 1400px;
   margin: 0 auto;
 }
 </style>
